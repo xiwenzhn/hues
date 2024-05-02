@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange Gradient Generator</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: radial-gradient(circle, #FFA500, #FF4500); /* Initial orange gradient */
+        }
+        
+        .link {
+            position: fixed;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: underline dashed;
+            font-family: NSRLDNA-Regular;
+        }
+
+        #limited-hue {
+            top: 20px;
+            left: 20px;
+        }
+
+        #limited-value {
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a id="limited-hue" class="link" href="file:///Users/xiwenzhang/Desktop/Work/Yale/Spring%202024/COLOR%20SPACE%20INDEX/color%20space.html">Limited Hue</a>
+    <a id="limited-value" class="link" href="file:///Users/xiwenzhang/Desktop/Work/Yale/Spring%202024/COLOR%20SPACE%20INDEX/index.html">Limited Value</a>
+    
+    <script>
+        function generateRandomColor() {
+            // Generate random hue in the orange range (20-40 degrees)
+            var hue = Math.floor(Math.random() * 21) + 20;
+            // Generate random saturation and lightness for variation (50% - 100%)
+            var saturation = Math.floor(Math.random() * 51) + 50;
+            var lightness = Math.floor(Math.random() * 51) + 50;
+            // Construct HSL color string
+            var color = "hsl(" + hue + "," + saturation + "%," + lightness + "%)";
+            return color;
+        }
+
+        function generateGradient() {
+            var gradientColors = [];
+            for (var i = 0; i < 10; i++) { // Generate 10 random colors
+                gradientColors.push(generateRandomColor());
+            }
+            var gradientString = "radial-gradient(circle, ";
+            gradientString += gradientColors.join(", ");
+            gradientString += ")"; // Concatenate colors to form gradient string
+            document.body.style.background = gradientString; // Set body background
+        }
+
+        window.onload = generateGradient;
+    </script>
+</body>
+</html>
